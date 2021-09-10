@@ -15,8 +15,7 @@ Here's the schema:
 
 Answer the following questions by writing SQL queries that computes the desired
 result. Your queries shouldn't depend on the content of the database. You can
-test your solutions by tracing them on a small sample database (see the following
-setup instructions). You need to submit your queries in the correct syntax.
+test your solutions by tracing them on the sample database. You need to submit your queries in the correct syntax.
 
 The following graph shows the various connections between the students in our
 database. 9th graders are blue, 10th graders are green, 11th graders are yellow,
@@ -27,6 +26,7 @@ directed red edges indicate that one student likes another student.
 
 ## Write queries
 1. Find the names of all students who are friends with someone named Gabriel.
+
 ```
 Expected output:
 +-----------+
@@ -39,8 +39,10 @@ Expected output:
 | Jessica   |
 +-----------+
 ```
+
 2. Find all students who do not appear in the Likes table (as a student who
   likes or is liked) and return their names and grades.
+
 ```
 Expected output:
 +---------+-------+
@@ -52,8 +54,10 @@ Expected output:
 +---------+-------+
 3 rows in set (0.01 sec)
 ```
+
 3. (*) Find the name and grade of all students who are liked by more than one
   other student.
+
 ```
 Expected output:
 +-----------+-------+
@@ -64,11 +68,12 @@ Expected output:
 +-----------+-------+
 2 rows in set (0.00 sec)
 ```
+
 4. (*) For every student who likes someone 2 or more
   grades younger than themselves, return that student's name and grade, and the
   name and grade of the student they like. Note that your conditions in the
-  where clause can include any arithmetic expressions, e.g. (a-b > 10) AND
-  (c < d*2).
+  where clause can include any arithmetic expressions, e.g. `(a-b > 10)` AND `(c < d*2)`.
+
 ```
 Expected output:
 +------+-------+-------+-------+
@@ -78,19 +83,24 @@ Expected output:
 +------+-------+-------+-------+
 1 row in set (0.00 sec)
 ```
+
 5. (**) Find names and grades of students who only have friends in the same
   grade. Return the result sorted by grade, then by name within each grade.
   (what about students with no friends?)
+
 6. (***) For each student A who likes a student B where the two are not friends,
   find if they have a friend C in common (who can introduce them!). For all
   such trios, return the name and grade of A, B, and C.
+
 7. (**) Find the difference between the number of students in the school and
   the number of different first names.
+
 8. (**) What is the average number of friends per student? (Your result should
   be just one number.) Hint: consider divide-and-conquer in two steps:
   Find the number of friends of each student, which should results in a list
   of numbers. Find the average of the list of numbers from the previous step.
 ```
+
 Expected output:
 +-------------------------+
 | avg friends per student |
@@ -100,65 +110,16 @@ Expected output:
 1 row in set (0.00 sec)
 
 ```
+
 9. (***) Find the number of students who are either friends with Cassandra or
   are friends of friends of Cassandra. Do not count Cassandra, even though
   technically she is a friend of a friend.
+
 10. (***) Find the name and grade of the student(s) with the greatest number of
   friends.
 
-## Setup MySQL on Cloud 9
-Install MySQL database engine on command line if you haven't done so:
-```
-mysql-ctl install
-```
-The output will be:
-```
-MySQL 5.5 database added.  Please make note of these credentials:
-
-Root User: username
-Database Name: c9
-```
-No password is set on MySQL, which is rarely an issue in a development
-environment. You can setup user authentication if you want.
-
-We will use the MySQL client on the command line to interact with MySQL database
-engine:
-```
-mysql-ctl cli
-```
-
-## Import testing database
-Type the commands after the MySQL command prompt (`mysql>`):
-
-Create an empty database:
-```
-mysql> create database social;
-Query OK, 1 row affected (0.00 sec)
-
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| c9                 |
-| mysql              |
-| performance_schema |
-| phpmyadmin         |
-| social             |
-+--------------------+
-6 rows in set (0.00 sec)
-```
-Populate the database with data from `social.sql`:
-```
-mysql> use social
-Database changed
-mysql> source social.sql
-```
-Note: the last command assumes that 'social.sql' is in the directory where you
-run `mysql-ctl cli`. You can always exit by typing `exit` and restart the MySQL
-client in another directory.
-
 ## View database tables
+
 ```
 mysql> select * from Highschooler;
 +------+-----------+-------+
