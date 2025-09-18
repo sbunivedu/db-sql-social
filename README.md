@@ -88,35 +88,56 @@ Expected output:
   grade. Return the result sorted by grade, then by name within each grade.
   (what about students with no friends?)
 
+```
+Expected output:
++----------+-------+
+| name     | grade |
++----------+-------+
+| Jordan   |     9 |
+| Haley    |    10 |
+| Kris     |    10 |
+| Brittany |    10 |
+| Gabriel  |    11 |
+| John     |    12 |
+| Logan    |    12 |
++----------+-------+
+7 rows in set (0.01 sec)
+```
+
 6. (***) For each student A who likes a student B where the two are not friends,
   find if they have a friend C in common (who can introduce them!). For all
   such trios, return the name and grade of A, B, and C.
 
 ```
 Expected output:
-+----------+-------+-----------+-------+---------+-------+
-| name     | grade | name      | grade | name    | grade |
-+----------+-------+-----------+-------+---------+-------+
-| Brittany |    10 | Kris      |    10 | Haley   |    10 |
-| Gabriel  |    11 | Alexis    |    11 | Jessica |    11 |
-| Andrew   |    10 | Cassandra |     9 | Gabriel |     9 |
-| Austin   |    11 | Jordan    |    12 | Andrew  |    10 |
-| Austin   |    11 | Jordan    |    12 | Kyle    |    12 |
-+----------+-------+-----------+-------+---------+-------+
-5 rows in set (0.01 sec)
++--------+-------+-----------+-------+---------+-------+
+| name   | grade | name      | grade | name    | grade |
++--------+-------+-----------+-------+---------+-------+
+| Andrew |    10 | Cassandra |     9 | Gabriel |     9 |
+| Austin |    11 | Jordan    |    12 | Andrew  |    10 |
+| Austin |    11 | Jordan    |    12 | Kyle    |    12 |
++--------+-------+-----------+-------+---------+-------+
+3 rows in set (0.00 sec)
 ```
 
 7. (**) Find the difference between the number of students in the school and
   the number of different first names.
-
+```
+Expected output:
++------------+
+| difference |
++------------+
+|          2 |
++------------+
+1 row in set (0.00 sec)
+```
 8. (**) What is the average number of friends per student? (Your result should
   be just one number.) Hint: consider divide-and-conquer in two steps:
   Find the number of friends of each student, which should results in a list
   of numbers. Find the average of the list of numbers from the previous step.
 
-Expected output:
-
 ```
+Expected output:
 +-------------------------+
 | avg friends per student |
 +-------------------------+
